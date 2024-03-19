@@ -10,9 +10,16 @@
  
 ## Background  
 ![image](https://github.com/MINJEONG-L/Denoising-Diffusion-Probabilistic-Models/assets/82145878/e70db500-6f68-407c-9053-d6c9c407aa7d)
-### Forward process(diffusion process) : 주어진 이미지 $x0$에서 서서히 noise를 추가하는 과정 $q$   
+### Forward process(diffusion process) : 주어진 이미지 $x0$에서 서서히 gaussian noise를 추가하는 과정 $q$   
+![image](https://github.com/MINJEONG-L/Denoising-Diffusion-Probabilistic-Models/assets/82145878/79b9b8a6-a49f-4467-896a-df9375813513)  
 - $q(xt∣xt−1)$ : $xt−1$에 noise를 적용해 $xt$을 만드는 것
--  $xT$ : 완전히 destroy 된 형태로 이는 normal distribution $N(xT;0,I)$을 따른다.
+-  $xT$ : 완전히 destroy 된 형태로 이는 normal distribution $N(xT;0,I)$을 따른다.  
+-  주입되는 gaussian noise 크기는 사전적으로 정의되고 이를 $βt$로 표기  
+-  $βt$의 사전적 정의(scheduling)가 고려하는 3가지
+    - Linear shecdule
+    - Qued schedule
+    - Sigmoid schedule  
+
 ### Reverse process(denoising process) : 주어진 이미지에서 noise를 점직적으로 걷어내는 과정 $p$  
 - $p(xt-1∣xt)$ : $xt$에 noise를 걷어내 $xt-1$을 만드는 것
 - $xt$들은 서로 resolution이 같다.  
