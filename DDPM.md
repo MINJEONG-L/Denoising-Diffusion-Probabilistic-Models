@@ -14,15 +14,15 @@
 ![image](https://github.com/MINJEONG-L/Denoising-Diffusion-Probabilistic-Models/assets/82145878/e70db500-6f68-407c-9053-d6c9c407aa7d)
 ### Forward process(diffusion process) : 주어진 이미지 $x0$에서 서서히 gaussian noise를 추가하는 과정 $q$   
 ![image](https://github.com/MINJEONG-L/Denoising-Diffusion-Probabilistic-Models/assets/82145878/79b9b8a6-a49f-4467-896a-df9375813513)  
-- $q(xt∣xt−1)$ : $xt−1$에 noise를 적용해 $xt$을 만드는 것
--  $xT$ : 완전히 destroy 된 형태로 이는 normal distribution $N(xT;0,I)$을 따른다.  
+- $q(x_t∣x_t−1)$ : $x_t−1$에 noise를 적용해 $x_t$을 만드는 것
+-  $x_T$ : 완전히 destroy 된 형태로 이는 normal distribution $N(x_T;0,I)$을 따른다.  
 -  주입되는 gaussian noise 크기는 사전적으로 정의되고 이를 $βt$로 표기  
 -  $βt$의 사전적 정의(scheduling)가 고려하는 3가지
     - Linear shecdule
     - Quad schedule
     - Sigmoid schedule
 
-**diffusion process 는 conditional gaussian 의 joint-distribution으로서, X0를 조건부로 latent variables(X_1:r)를 생성해내는 과정 $q$**
+**diffusion process 는 conditional gaussian 의 joint-distribution으로서, $X0$를 조건부로 latent variables($X_1:r$)를 생성해내는 과정 $q$**
   - 가장 마지막 latent variable($X_T$ = $Z_T$)로 pure isotropic gaussian(방향에 따라 변하지 않는)을 획득
 ![image](https://github.com/MINJEONG-L/Denoising-Diffusion-Probabilistic-Models/assets/82145878/d5b5fcbb-4a1f-4f65-87c0-4b9f3fe5846c)  
   
@@ -32,9 +32,9 @@
   - diffusion process와 차이는 diffusion process에서 사전에 정의한 노이즈 크기인 베타에 의해서 모수인 평균과 분포가 정의가 되어 알고 있고 만들어 낼 수 있는 것이었지만 reverse process는 우리가 알지못하는 조건부 가우시안 분포라는 점  
   - 그래서 조건부 가우시안 분포의 모수인 평균과 분산을 학습해야함.  
 
-- $p(xt-1∣xt)$ : $xt$에 noise를 걷어내 $xt-1$을 만드는 것, diffusion process의 역 과정(Denoising)을 학습  
-- $xt$들은 서로 resolution이 같다.  
-- $pθ(x0)$ : $x0$에 대한 확률 분포  
+- $p(x_t-1∣x_t)$ : $x_t$에 noise를 걷어내 $x_t-1$을 만드는 것, diffusion process의 역 과정(Denoising)을 학습  
+- $x_t$들은 서로 resolution이 같다.  
+- $p_θ($x_0$)$ : $x_0$에 대한 확률 분포  
 - $pθ(x0:T)dx1:T$ : (x1부터 xT까지)에 대한 결합 확률 분포와 x1부터 xT까지의 모든 숨겨진 변수에 대한 적분 ==> $pθ(x0)$을 계산하기 위해 데이터 $x0$의 확률 분포를 계산하는 것  
 #### Reverse process loss   
 - reverse process가 학습의 대상, 그래서 학습의 방향을 보여줄 수 있는 loss function 필요
@@ -46,12 +46,6 @@
 ![image](https://github.com/MINJEONG-L/Denoising-Diffusion-Probabilistic-Models/assets/82145878/e63ae0d1-d508-470a-a841-7762615ed82b)
 
 
-
-- 
-/// 잠재 변수 모델  
-    - 데이터를 생성하는 과정을 설명하기 위해 관찰되지 않는 변수를 사용하는 확률 모델  
-    - 관찰 가능한 변수(데이터)와 관찰되지 않는 변수(잠재변수) 간의 관계를 나타내는데 사용
-## Diffusion models and denoising autoencoders  
 ## Denoising Diffusion Probabilistic Model  
 ### DDPM Loss  
 ![image](https://github.com/MINJEONG-L/Denoising-Diffusion-Probabilistic-Models/assets/82145878/749c182b-dcd3-4d3d-9540-6090ea652618)  
